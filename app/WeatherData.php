@@ -11,16 +11,26 @@ namespace App;
 
 class WeatherData implements ObservableInterface {
 
+    /**
+     * add an observer to the observer array
+     */
     public function registerObserver()
     {
-        
+
+
     }
 
+    /**
+     * remove an observer from the observer array
+     */
     public function removeObserver()
     {
 
     }
 
+    /**
+     * notify all observers
+     */
     public function notifyObserver()
     {
 
