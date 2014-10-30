@@ -31,7 +31,7 @@ class WeatherData implements ObservableInterface {
     /**
      * notify all observers
      */
-    public function notifyObserver()
+    public function notifyObservers()
     {
 
     }
