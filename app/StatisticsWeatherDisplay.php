@@ -13,7 +13,7 @@ class StatisticsWeatherDisplay implements ObserverInterface {
 
     public function update($temp, $humidity, $chanceOfRain)
     {
-
+        return 'hello from stats';
     }
 
     public function display()

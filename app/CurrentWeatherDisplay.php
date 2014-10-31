@@ -13,8 +13,7 @@ class CurrentWeatherDisplay implements ObserverInterface{
 
     public function update($temp, $humidity, $chanceOfRain)
     {
-
-
+        return 'hello';
     }
 
     public function display()

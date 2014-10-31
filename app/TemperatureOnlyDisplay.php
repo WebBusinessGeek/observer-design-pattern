@@ -13,7 +13,7 @@ class TemperatureOnlyDisplay implements ObserverInterface {
 
     public function update($temp, $humidity, $chanceOfRain)
     {
-
+        return 'hello from temp';
     }
 
     public function display()

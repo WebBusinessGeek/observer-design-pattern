@@ -33,7 +33,6 @@ class WeatherData implements ObservableInterface {
 
         $this->observers = [];
 
-
     }
 
     public function setTemp($temp)
@@ -54,11 +53,11 @@ class WeatherData implements ObservableInterface {
 
     public function setHumidity($humidity)
     {
-        $this->humidity = $this->checkForValue($humidity);
+        $this->humidity = $this->checkTheValue($humidity);
 
     }
 
-    public function checkForValue($integer)
+    public function checkTheValue($integer)
     {
         if(!is_int($integer) || $integer <= 0 || $integer > 100)
         {
@@ -69,45 +68,57 @@ class WeatherData implements ObservableInterface {
         return $integer;
     }
 
+    public function getObserverPlace(ObserverInterface $observer)
+    {
+        return array_search($observer, $this->observers);
+
+
+    }
+
     public function setChanceOfRain($chanceOfRain)
     {
-        $this->chanceOfRain = $this->checkForValue($chanceOfRain);
+        $this->chanceOfRain = $this->checkTheValue($chanceOfRain);
 
     }
 
 
 
-    /**
-     * add an observer to the observer array
-     */
     public function registerObserver(ObserverInterface $observer)
     {
-        array_push($this->observers, $observer);
+        $this->observers[] = $observer;
 
         return $this;
 
     }
 
-    /**
-     * remove an observer from the observer array
-     */
+
     public function removeObserver(ObserverInterface $observer)
     {
-        //this doesnt work yet!!!
-       if($key = array_search($observer, $this->observers) !== false)
-       {
-           unset($this->observers[$key]);
-       }
+        unset($this->observers[$this->getObserverPlace($observer)]);
 
+        return $this->observers;
 
     }
 
-    /**
-     * notify all observers
-     */
+    public function changed($temp, $humidity, $chanceOfRain)
+    {
+        $this->setTemp($temp);
+
+        $this->setHumidity($humidity);
+
+        $this->setChanceOfRain($chanceOfRain);
+
+        return $this->notifyObservers();
+    }
+
     public function notifyObservers()
     {
+        foreach($this->observers as $observer)
+        {
+            $observer->update($this->temperature, $this->humidity, $this->chanceOfRain);
 
+        }
+        return 'observers notified';
     }
 
 
