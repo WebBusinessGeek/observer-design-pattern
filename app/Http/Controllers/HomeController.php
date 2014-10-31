@@ -1,5 +1,6 @@
 <?php namespace App\Http\Controllers;
 
+use App\WeatherData;
 use Illuminate\Routing\Controller;
 
 class HomeController extends Controller {
@@ -20,7 +21,8 @@ class HomeController extends Controller {
 	 */
 	public function index()
 	{
-		return view('hello');
+		$w = new WeatherData();
+		var_dump($w->checkTemp(11));
 	}
 
 }

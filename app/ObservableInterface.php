@@ -11,9 +11,9 @@ namespace App;
 
 interface ObservableInterface {
 
-    public function registerObserver();
+    public function registerObserver(ObserverInterface $observer);
 
-    public function removeObserver();
+    public function removeObserver(ObserverInterface $observer);
 
     public  function notifyObservers();
 
