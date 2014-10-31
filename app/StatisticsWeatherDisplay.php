@@ -3,15 +3,15 @@
  * Created by PhpStorm.
  * User: MacBookEr
  * Date: 10/30/14
- * Time: 8:11 PM
+ * Time: 8:10 PM
  */
 
 namespace App;
 
 
-class TemperatureOnlyDisplay implements ObserverInterface {
+class StatisticsWeatherDisplay implements ObserverInterface {
 
-    public function update()
+    public function update($temp, $humidity, $chanceOfRain)
     {
 
     }
@@ -20,4 +20,6 @@ class TemperatureOnlyDisplay implements ObserverInterface {
     {
 
     }
+
+
 }

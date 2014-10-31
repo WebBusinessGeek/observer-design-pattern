@@ -14,22 +14,24 @@ use SebastianBergmann\Exporter\Exception;
 class WeatherData implements ObservableInterface {
 
     //contains the observers
-    public $observers = [];
+    public $observers;
 
     public $temperature;
 
-    public $humidity;
+    protected $humidity;
 
-    public $chanceOfRain;
+    protected $chanceOfRain;
 
 
-    public function __construct()
+    public function __construct($temp, $humidity, $chanceOfRain)
     {
-//        $this->setTemp($temp);
+        $this->setTemp($temp);
 
-//        $this0>setHumidity($humidity);
-//
-//        $this0>setChance($chanceOfRain);
+        $this->setHumidity($humidity);
+
+        $this->setChanceOfRain($chanceOfRain);
+
+        $this->observers = [];
 
 
     }
@@ -52,15 +54,37 @@ class WeatherData implements ObservableInterface {
 
     public function setHumidity($humidity)
     {
+        $this->humidity = $this->checkForValue($humidity);
 
     }
+
+    public function checkForValue($integer)
+    {
+        if(!is_int($integer) || $integer <= 0 || $integer > 100)
+        {
+            throw new Exception('Invalid Argument:'.$integer);
+
+        }
+
+        return $integer;
+    }
+
+    public function setChanceOfRain($chanceOfRain)
+    {
+        $this->chanceOfRain = $this->checkForValue($chanceOfRain);
+
+    }
+
+
 
     /**
      * add an observer to the observer array
      */
     public function registerObserver(ObserverInterface $observer)
     {
+        array_push($this->observers, $observer);
 
+        return $this;
 
     }
 
@@ -69,6 +93,12 @@ class WeatherData implements ObservableInterface {
      */
     public function removeObserver(ObserverInterface $observer)
     {
+        //this doesnt work yet!!!
+       if($key = array_search($observer, $this->observers) !== false)
+       {
+           unset($this->observers[$key]);
+       }
+
 
     }
 

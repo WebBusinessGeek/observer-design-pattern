@@ -13,13 +13,17 @@ use App\WeatherData;
 
 class WeatherDataTest extends \PHPUnit_Framework_TestCase {
 
-    public function testSetTemp()
-    {
-        $temp = 80;
-        $weatherData = new WeatherData($temp);
 
-//        $this->assert
+    public function testConstructOK()
+    {
+        $w = new WeatherData(11, 10, 10);
+
+        $this->assertEquals(10, $w->chanceOfRain);
+        $this->assertEquals(11, $w->temperature);
+        $this->assertEquals(10, $w->humidity);
 
     }
+
+
 
 }

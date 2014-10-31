@@ -11,7 +11,7 @@ namespace App;
 
 class CurrentWeatherDisplay implements ObserverInterface{
 
-    public function update()
+    public function update($temp, $humidity, $chanceOfRain)
     {
 
 
