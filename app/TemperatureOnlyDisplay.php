@@ -11,13 +11,32 @@ namespace App;
 
 class TemperatureOnlyDisplay implements ObserverInterface {
 
+    public $temperature;
+
+    public function __construct()
+    {
+        $this->temperature = 'No data yet';
+    }
+
     public function update($temp, $humidity, $chanceOfRain)
     {
-        return 'hello from temp';
+        $this->temperature = $temp;
+
+        return 'updated';
     }
 
     public function display()
     {
+        return $this->displayTemp();
+    }
 
+    public function displayTemp()
+    {
+        $title = "<h2>Current Temperature</h2>";
+
+        $template = "<b>". $this->temperature. "</b>";
+
+        $glyph = ' degrees';
+        return $title . $template . $glyph;
     }
 }

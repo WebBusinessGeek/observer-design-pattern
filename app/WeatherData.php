@@ -85,6 +85,8 @@ class WeatherData implements ObservableInterface {
 
     public function registerObserver(ObserverInterface $observer)
     {
+        $observer->update($this->temperature, $this->humidity, $this->chanceOfRain);
+
         $this->observers[] = $observer;
 
         return $this;

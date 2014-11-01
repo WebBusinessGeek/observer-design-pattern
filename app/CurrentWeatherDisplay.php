@@ -40,13 +40,15 @@ class CurrentWeatherDisplay implements ObserverInterface{
 
     public function display()
     {
-        $temp = $this->displayTemp();
+        $title = "<h2>Current Weather</h2>";
+
+        $temperature = $this->displayTemp();
 
         $humidity = $this->displayHumidity();
 
         $chanceOfRain = $this->displayChanceOfRain();
 
-        return $temp . "<br/>" . $humidity . "<br/>" . $chanceOfRain;
+        return $title. $temperature . "<br/>" . $humidity . "<br/>" . $chanceOfRain;
 
     }
 
