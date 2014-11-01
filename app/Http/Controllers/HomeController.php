@@ -26,14 +26,10 @@ class HomeController extends Controller {
 	{
 		$w = new WeatherData(50, 50, 50);
 		$c = new CurrentWeatherDisplay();
-		$c2 = new StatisticsWeatherDisplay();
-		$c3 = new CurrentWeatherDisplay();
-		$c4 = new TemperatureOnlyDisplay();
-		$w->registerObserver($c)->registerObserver($c2)->registerObserver($c3)->registerObserver($c4);
+		$w->registerObserver($c);
+		$w->changed(90,22,67);
+		return $c->display();
 
-		//dd($w->observers);
-		$w->changed(35,50,60);
-		var_dump($w);
 
 	}
 
