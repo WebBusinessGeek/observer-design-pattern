@@ -32,7 +32,7 @@ class HomeController extends Controller {
 		$w->changed(90,22,67);
 		$w->changed(93,44,45);
 		//return $c3->allTemp().$c3->highTemp().$c3->lowTemp().$c3->averageTemp();
-		return $c->display().$c2->display();
+		return $c->display().$c2->display().$c3->display();
 
 
 	}

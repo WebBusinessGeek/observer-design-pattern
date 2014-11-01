@@ -31,28 +31,36 @@ class StatisticsWeatherDisplay implements ObserverInterface {
 
     public function display()
     {
-        //show a title 'Statistics'
+        $title = "<h2>Today's Weather Statistics</h2>";
 
-        //return displayTemp() & displayHumidity()
+        return $title . $this->displayTemp() . "<br/>" . $this->displayHumidity();
 
     }
 
     public function displayTemp()
     {
+        $title = "<h5>Temperature</h5>";
         //show the highest temperature
-
+        $high = "<b>High: </b>".$this->highTemp(). " degrees";
         //show the lowest temperature
-
+        $low = "<b>Low: </b>". $this->lowTemp(). " degrees";
         //show the average temperature
+        $average = "<b>Average: </b>". $this->averageTemp(). " degrees";
+
+        return $title . $high . $low . $average;
     }
 
     public function displayHumidity()
     {
-        //show the highest humidity
+        $title = "<h5>Humidity</h5>";
+        //show the highest temperature
+        $high = "<b>High: </b>".$this->highHumidity(). " % ";
+        //show the lowest temperature
+        $low = "<b>Low: </b>". $this->lowHumidity(). " % ";
+        //show the average temperature
+        $average = "<b>Average: </b>". $this->averageHumidity(). " % ";
 
-        //show the lowest humidity
-
-        //show the average humidity
+        return $title . $high . $low . $average;
     }
 
     public function allTemp()
